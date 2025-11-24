@@ -1,0 +1,116 @@
+﻿<Seed>
+
+	<Animals>
+		<Animal id="a1">
+			<Name>Wallace</Name>
+			<Weight>1500.00</Weight>
+		</Animal>
+	</Animals>
+
+	<AnimalCategories>
+		<AnimalCategory id="ac1">
+			<CategoryName>Land Mammal</CategoryName>
+		</AnimalCategory>
+		<AnimalCategory id="ac2">
+			<CategoryName>Aquatic Creature</CategoryName>
+		</AnimalCategory>
+		<AnimalCategory id="ac3">
+			<CategoryName>Avian Creature</CategoryName>
+		</AnimalCategory>
+	</AnimalCategories>
+
+	<Customers>
+		<Customer id="c1">
+			<FirstName>George</FirstName>
+			<LastName>Franklin</LastName>
+			<Address1>1248 Maple Grove Lane</Address1>
+			<Address2>Apt. 3B</Address2>
+			<ZIP>73228</ZIP>
+			<City>Portland</City>
+			<State>Oregon</State>
+			<Phone>727-813-0911</Phone>
+			<Email>TestEmail12@gmail.com</Email>
+		</Customer>
+	</Customers>
+
+	<Employees>
+		<Employee id="e1">
+			<FirstName>Tyler</FirstName>
+			<LastName>Smih</LastName>
+		</Employee>
+	</Employees>
+
+	<Events>
+		<Event id="ev1">
+			<EventName>12PM Mega Event</EventName>
+			<EventStart>2025-11-10T10:00:00</EventStart>
+			<EventEnd>2025-11-10T13:00:00</EventEnd>
+		</Event>
+	</Events>
+
+	<EventCategorys>
+		<EventCategory id="ec1">
+			<EventCategoryName>Small</EventCategoryName>
+			<AvailableToCustomers>false</AvailableToCustomers>
+		</EventCategory>
+		<EventCategory id="ec2">
+			<EventCategoryName>Medium</EventCategoryName>
+			<AvailableToCustomers>true</AvailableToCustomers>
+		</EventCategory>
+		<EventCategory id="ec3">
+			<EventCategoryName>Large</EventCategoryName>
+			<AvailableToCustomers>true</AvailableToCustomers>
+		</EventCategory>
+	</EventCategorys>
+
+	<Genders>
+		<Gender id="g1">
+			<GenderName>Male</GenderName>
+		</Gender>
+		<Gender id="g2">
+			<GenderName>Female</GenderName>
+		</Gender>
+	</Genders>
+
+	<HealthStatuses>
+		<HealthStatus id="hs1">
+			<HealthDescription>Healthy</HealthDescription>
+		</HealthStatus>
+	</HealthStatuses>
+
+	<Sessions>
+		<Session id="s1">
+			<ItemRef id="tt1" />
+			<ItemRef id="ev1" />
+			<ItemRef id="v1" />
+		</Session>		
+	</Sessions>
+
+	<Species>
+		<Species id="sp1">
+			<SpeciesName>Leo</SpeciesName>
+		</Species>
+	</Species>
+
+	<TicketSales>
+		<TicketSale id="ts1">
+			<Price>15.00</Price>
+			<DateSold>2025-11-05</DateSold>
+			<AppliciableFor>2025-11-12</AppliciableFor>
+		</TicketSale>
+	</TicketSales>
+
+	<TicketTypes>
+		<TicketType id="tt1">
+			<TicketTypeName>FamilyPackage</TicketTypeName>
+		</TicketType>
+	</TicketTypes>
+
+	<Venues>
+		<Venue id="v1">
+			<VenueName>Apatheater</VenueName>
+			<Capacity>50</Capacity>
+		</Venue>
+	</Venues>
+
+</Seed>
