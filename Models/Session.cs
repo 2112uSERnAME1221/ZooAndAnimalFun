@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ZooAnimalList.Models
+namespace ZooAndAnimalFun.Models
 {
     public class Session
     {

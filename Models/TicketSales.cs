@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ZooAnimalList.Models
+namespace ZooAndAnimalFun.Models
 {
     public class TicketSales
     {

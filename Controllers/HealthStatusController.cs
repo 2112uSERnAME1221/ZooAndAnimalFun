@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ZooAndAnimalFun.Data;
-using ZooAnimalList.Models;
+using ZooAndAnimalFun.Models;
 
 namespace ZooAndAnimalFun.Controllers
 {

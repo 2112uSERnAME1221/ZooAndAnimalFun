@@ -12,23 +12,6 @@ namespace ZooAndAnimalFun.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Animal",
-                columns: table => new
-                {
-                    AnimalID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    SpeciesID = table.Column<int>(type: "int", nullable: false),
-                    Weight = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    GenderID = table.Column<int>(type: "int", nullable: false),
-                    HealthStatusID = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Animal", x => x.AnimalID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AnimalCategories",
                 columns: table => new
                 {
@@ -206,6 +189,34 @@ namespace ZooAndAnimalFun.Migrations
                 {
                     table.PrimaryKey("PK_Venue", x => x.VenueID);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Animal",
+                columns: table => new
+                {
+                    AnimalID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    SpeciesID = table.Column<int>(type: "int", nullable: false),
+                    Weight = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    GenderID = table.Column<int>(type: "int", nullable: false),
+                    HealthStatusID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Animal", x => x.AnimalID);
+                    table.ForeignKey(
+                        name: "FK_Animal_Gender_GenderID",
+                        column: x => x.GenderID,
+                        principalTable: "Gender",
+                        principalColumn: "GenderID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Animal_GenderID",
+                table: "Animal",
+                column: "GenderID");
         }
 
         /// <inheritdoc />
@@ -230,9 +241,6 @@ namespace ZooAndAnimalFun.Migrations
                 name: "EventCategory");
 
             migrationBuilder.DropTable(
-                name: "Gender");
-
-            migrationBuilder.DropTable(
                 name: "HealthStatus");
 
             migrationBuilder.DropTable(
@@ -249,6 +257,9 @@ namespace ZooAndAnimalFun.Migrations
 
             migrationBuilder.DropTable(
                 name: "Venue");
+
+            migrationBuilder.DropTable(
+                name: "Gender");
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ZooAnimalList.Models.Animal>
+﻿@model IEnumerable<ZooAndAnimalFun.Models.Animal>
 
 @{
     ViewData["Title"] = "Index";
@@ -22,7 +22,7 @@
                 @Html.DisplayNameFor(model => model.Weight)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.GenderID)
+                @Html.DisplayNameFor(model => model.Gender.GenderName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.HealthStatusID)
@@ -43,7 +43,7 @@
                 @Html.DisplayFor(modelItem => item.Weight)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.GenderID)
+                @Html.DisplayFor(modelItem => item.Gender.GenderName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.HealthStatusID)

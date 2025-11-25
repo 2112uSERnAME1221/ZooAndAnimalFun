@@ -8,7 +8,7 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Serialization;
 using ZooAndAnimalFun.Models;
-using ZooAnimalList.Models;
+using ZooAndAnimalFun.Models;
 
 namespace ZooAndAnimalFun.Data
 {

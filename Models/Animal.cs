@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ZooAnimalList.Models
+namespace ZooAndAnimalFun.Models
 {
 
     public class Animal
@@ -21,9 +21,11 @@ namespace ZooAnimalList.Models
       [Column(TypeName = "decimal(18, 2)")]
       public double Weight { get; set; }
 
-      [Required]     
-      public int GenderID { get; set; }
 
+      [ForeignKey("GenderID")]
+      public int GenderID { get; set; }
+      
+      public virtual Gender Gender { get; set; }
      
       public int HealthStatusID { get; set; }
     }

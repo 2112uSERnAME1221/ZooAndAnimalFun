@@ -12,7 +12,7 @@ using ZooAndAnimalFun.Data;
 namespace ZooAndAnimalFun.Migrations
 {
     [DbContext(typeof(ZooAndAnimalFunContext))]
-    [Migration("20251123002136_InitialCreate")]
+    [Migration("20251125234119_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -25,24 +25,7 @@ namespace ZooAndAnimalFun.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ZooAndAnimalFun.Models.Gender", b =>
-                {
-                    b.Property<int>("GenderID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GenderID"));
-
-                    b.Property<string>("GenderName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("GenderID");
-
-                    b.ToTable("Gender");
-                });
-
-            modelBuilder.Entity("ZooAnimalList.Models.Animal", b =>
+            modelBuilder.Entity("ZooAndAnimalFun.Models.Animal", b =>
                 {
                     b.Property<int>("AnimalID")
                         .ValueGeneratedOnAdd()
@@ -69,10 +52,12 @@ namespace ZooAndAnimalFun.Migrations
 
                     b.HasKey("AnimalID");
 
+                    b.HasIndex("GenderID");
+
                     b.ToTable("Animal");
                 });
 
-            modelBuilder.Entity("ZooAnimalList.Models.AnimalCategories", b =>
+            modelBuilder.Entity("ZooAndAnimalFun.Models.AnimalCategories", b =>
                 {
                     b.Property<int>("CategoryID")
                         .ValueGeneratedOnAdd()
@@ -90,7 +75,7 @@ namespace ZooAndAnimalFun.Migrations
                     b.ToTable("AnimalCategories");
                 });
 
-            modelBuilder.Entity("ZooAnimalList.Models.Customer", b =>
+            modelBuilder.Entity("ZooAndAnimalFun.Models.Customer", b =>
                 {
                     b.Property<int>("CustomerID")
                         .ValueGeneratedOnAdd()
@@ -143,7 +128,7 @@ namespace ZooAndAnimalFun.Migrations
                     b.ToTable("Customer");
                 });
 
-            modelBuilder.Entity("ZooAnimalList.Models.Employee", b =>
+            modelBuilder.Entity("ZooAndAnimalFun.Models.Employee", b =>
                 {
                     b.Property<int>("EmployeeID")
                         .ValueGeneratedOnAdd()
@@ -166,7 +151,7 @@ namespace ZooAndAnimalFun.Migrations
                     b.ToTable("Employee");
                 });
 
-            modelBuilder.Entity("ZooAnimalList.Models.Event", b =>
+            modelBuilder.Entity("ZooAndAnimalFun.Models.Event", b =>
                 {
                     b.Property<int>("EventId")
                         .ValueGeneratedOnAdd()
@@ -196,7 +181,7 @@ namespace ZooAndAnimalFun.Migrations
                     b.ToTable("Event");
                 });
 
-            modelBuilder.Entity("ZooAnimalList.Models.EventCategory", b =>
+            modelBuilder.Entity("ZooAndAnimalFun.Models.EventCategory", b =>
                 {
                     b.Property<int>("EventCategoryID")
                         .ValueGeneratedOnAdd()
@@ -217,7 +202,24 @@ namespace ZooAndAnimalFun.Migrations
                     b.ToTable("EventCategory");
                 });
 
-            modelBuilder.Entity("ZooAnimalList.Models.HealthStatus", b =>
+            modelBuilder.Entity("ZooAndAnimalFun.Models.Gender", b =>
+                {
+                    b.Property<int>("GenderID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GenderID"));
+
+                    b.Property<string>("GenderName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("GenderID");
+
+                    b.ToTable("Gender");
+                });
+
+            modelBuilder.Entity("ZooAndAnimalFun.Models.HealthStatus", b =>
                 {
                     b.Property<int>("HealthStatusId")
                         .ValueGeneratedOnAdd()
@@ -234,7 +236,7 @@ namespace ZooAndAnimalFun.Migrations
                     b.ToTable("HealthStatus");
                 });
 
-            modelBuilder.Entity("ZooAnimalList.Models.Session", b =>
+            modelBuilder.Entity("ZooAndAnimalFun.Models.Session", b =>
                 {
                     b.Property<int>("SessionID")
                         .ValueGeneratedOnAdd()
@@ -259,7 +261,7 @@ namespace ZooAndAnimalFun.Migrations
                     b.ToTable("Session");
                 });
 
-            modelBuilder.Entity("ZooAnimalList.Models.Species", b =>
+            modelBuilder.Entity("ZooAndAnimalFun.Models.Species", b =>
                 {
                     b.Property<int>("SpeciesID")
                         .ValueGeneratedOnAdd()
@@ -280,7 +282,7 @@ namespace ZooAndAnimalFun.Migrations
                     b.ToTable("Species");
                 });
 
-            modelBuilder.Entity("ZooAnimalList.Models.TicketSales", b =>
+            modelBuilder.Entity("ZooAndAnimalFun.Models.TicketSales", b =>
                 {
                     b.Property<int>("TicketID")
                         .ValueGeneratedOnAdd()
@@ -311,7 +313,7 @@ namespace ZooAndAnimalFun.Migrations
                     b.ToTable("TicketSales");
                 });
 
-            modelBuilder.Entity("ZooAnimalList.Models.TicketType", b =>
+            modelBuilder.Entity("ZooAndAnimalFun.Models.TicketType", b =>
                 {
                     b.Property<int>("TicketTypeID")
                         .ValueGeneratedOnAdd()
@@ -328,7 +330,7 @@ namespace ZooAndAnimalFun.Migrations
                     b.ToTable("TicketType");
                 });
 
-            modelBuilder.Entity("ZooAnimalList.Models.Venue", b =>
+            modelBuilder.Entity("ZooAndAnimalFun.Models.Venue", b =>
                 {
                     b.Property<int>("VenueID")
                         .ValueGeneratedOnAdd()
@@ -346,6 +348,17 @@ namespace ZooAndAnimalFun.Migrations
                     b.HasKey("VenueID");
 
                     b.ToTable("Venue");
+                });
+
+            modelBuilder.Entity("ZooAndAnimalFun.Models.Animal", b =>
+                {
+                    b.HasOne("ZooAndAnimalFun.Models.Gender", "Gender")
+                        .WithMany()
+                        .HasForeignKey("GenderID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Gender");
                 });
 #pragma warning restore 612, 618
         }
