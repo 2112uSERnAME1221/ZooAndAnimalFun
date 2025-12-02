@@ -12,7 +12,7 @@ using ZooAndAnimalFun.Data;
 namespace ZooAndAnimalFun.Migrations
 {
     [DbContext(typeof(ZooAndAnimalFunContext))]
-    [Migration("20251125234119_InitialCreate")]
+    [Migration("20251129220544_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

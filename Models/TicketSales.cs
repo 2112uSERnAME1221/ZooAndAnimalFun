@@ -12,8 +12,6 @@ namespace ZooAndAnimalFun.Models
       [DataType(DataType.Currency)]
       [Column(TypeName = "decimal(18, 2)")]
       public double Price { get; set; }
-
-      public int CustomerID { get; set; }
         
       [Display(Name = "Date Sold")]
       [DataType(DataType.Date)]
@@ -23,7 +21,16 @@ namespace ZooAndAnimalFun.Models
       [DataType(DataType.Date)]
       public DateTime AppliciableFor { get; set; }
 
+      [Required]
+      public int CustomerID { get; set; }
+      public virtual required Customer Customer { get; set; }
+
+      [Required]
       public int TicketTypeID { get; set; }
+      public virtual required TicketType TicketType { get; set; }
+
+      [Required]
       public int SessionID { get; set; }
+      public virtual required Session Session { get; set; }
     }
 }

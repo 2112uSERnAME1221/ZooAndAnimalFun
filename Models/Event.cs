@@ -5,7 +5,7 @@ namespace ZooAndAnimalFun.Models
     public class Event
     {
       [Key]
-      public int    EventId { get; set; }
+      public int EventId { get; set; }
 
       [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
       [Required]
@@ -20,8 +20,12 @@ namespace ZooAndAnimalFun.Models
       [DataType(DataType.Date)]
       public DateTime EventEnd { get; set; }
 
+      [Required]
       public int EventCategoryID { get; set; }
+      public virtual required EventCategory EventCategory { get; set; }
 
+      [Required]
       public int AnimalID { get; set; }
+      public virtual required Animal Animal { get; set; }
     }
 }

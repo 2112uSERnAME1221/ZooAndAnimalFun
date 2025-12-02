@@ -15,7 +15,7 @@ namespace ZooAndAnimalFun.Data
     public class DbInitializer
     {
 
-        public static void Initialize(ZooAndAnimalFunContext context, string xmlPath = @"C:\Users\benga\source\repos\ZooAndAnimalFun\Data\seed.xml")
+        public static void Initialize(ZooAndAnimalFunContext context, string xmlPath = @"Data\seed.xml")
         {
             {
                 // Ensure database is created
@@ -25,16 +25,6 @@ namespace ZooAndAnimalFun.Data
                 if (context.Animal.Any()) return;
                
                 SeedDto seed = LoadSeed(xmlPath);
-
-                Dictionary<string, Animal> animalDict = seed.Animals.ToDictionary(
-                    x => x.Id,
-                    x => new Animal
-                    {
-                        Name = x.Name,
-                        Weight = x.Weight
-                    }
-                );
-
 
                 Dictionary<string, AnimalCategories> animalCategoriesDict = seed.AnimalCategories.ToDictionary(
                     x => x.Id,
@@ -66,15 +56,6 @@ namespace ZooAndAnimalFun.Data
                         LastName = x.LastName
                     }
                     );
-                Dictionary<string, Event> eventDict = seed.Events.ToDictionary(
-                    x => x.Id,
-                    x => new Event
-                    {
-                        EventName = x.EventName,
-                        EventStart = x.EventStart,
-                        EventEnd = x.EventEnd
-                    }
-                    );
                 Dictionary<string, EventCategory> eventCategoryDict = seed.EventCategorys.ToDictionary(
                     x => x.Id,
                     x => new EventCategory
@@ -97,6 +78,15 @@ namespace ZooAndAnimalFun.Data
                         HealthDescription = x.HealthDescription
                     }
                     );
+                Dictionary<string, Event> eventDict = seed.Events.ToDictionary(
+                    x => x.Id,
+                    x => new Event
+                    {
+                        EventName = x.EventName,
+                        EventStart = x.EventStart,
+                        EventEnd = x.EventEnd
+                    }
+                    );
                 Dictionary<string, Species> speciesDict = seed.Species.ToDictionary(
                     x => x.Id,
                     x => new Species
@@ -104,15 +94,17 @@ namespace ZooAndAnimalFun.Data
                         SpeciesName = x.SpeciesName
                     }
                     );
-                Dictionary<string, Session> sessionDict = seed.Sessions.ToDictionary(
-                     x => x.Id,
-                     x => new Session
-                     {
-                          TicketID = x.TicketID,
-                          EventID = x.EventID,
-                          VenueID = x.VenueID 
-                     }
-                     );
+                Dictionary<string, Animal> animalDict = seed.Animals.ToDictionary(
+                    x => x.Id,
+                    x => new Animal
+                    {
+                        Name = x.Name,
+                        Weight = x.Weight,
+                        Gender = genderDict[x.GenderID],
+                        HealthStatus = healthStatusDict[x.HealthStatusID],
+                        Species = speciesDict[x.Species]
+                    }
+                    );
                 Dictionary<string, TicketSales> ticketSalesDict = seed.TicketSales.ToDictionary(
                     x => x.Id,
                     x => new TicketSales
@@ -135,6 +127,15 @@ namespace ZooAndAnimalFun.Data
                    {
                        VenueName = x.VenueName,
                        Capacity = x.Capacity
+                   }
+                   );
+                Dictionary<string, Session> sessionDict = seed.Sessions.ToDictionary(
+                   x => x.Id,
+                   x => new Session
+                   {
+                       TicketID = x.TicketID,
+                       EventID = x.EventID,
+                       VenueID = x.VenueID
                    }
                    );
                 /*

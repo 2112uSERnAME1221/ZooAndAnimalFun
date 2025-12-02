@@ -1,26 +1,26 @@
 ﻿<Seed>
 
 	<Animals>
-		<Animal id="a1">
+		<Animal id="A0000">
 			<Name>Wallace</Name>
 			<Weight>1500.00</Weight>
 		</Animal>
 	</Animals>
 
 	<AnimalCategories>
-		<AnimalCategory id="ac1">
+		<AnimalCategory id="AC0001">
 			<CategoryName>Land Mammal</CategoryName>
 		</AnimalCategory>
-		<AnimalCategory id="ac2">
+		<AnimalCategory id="AC0002">
 			<CategoryName>Aquatic Creature</CategoryName>
 		</AnimalCategory>
-		<AnimalCategory id="ac3">
+		<AnimalCategory id="AC0003">
 			<CategoryName>Avian Creature</CategoryName>
 		</AnimalCategory>
 	</AnimalCategories>
 
 	<Customers>
-		<Customer id="c1">
+		<Customer id="C0000">
 			<FirstName>George</FirstName>
 			<LastName>Franklin</LastName>
 			<Address1>1248 Maple Grove Lane</Address1>
@@ -34,14 +34,14 @@
 	</Customers>
 
 	<Employees>
-		<Employee id="e1">
+		<Employee id="E0000">
 			<FirstName>Tyler</FirstName>
 			<LastName>Smih</LastName>
 		</Employee>
 	</Employees>
 
 	<Events>
-		<Event id="ev1">
+		<Event id="EV0001">
 			<EventName>12PM Mega Event</EventName>
 			<EventStart>2025-11-10T10:00:00</EventStart>
 			<EventEnd>2025-11-10T13:00:00</EventEnd>
@@ -49,37 +49,37 @@
 	</Events>
 
 	<EventCategorys>
-		<EventCategory id="ec1">
+		<EventCategory id="EC0000">
 			<EventCategoryName>Small</EventCategoryName>
 			<AvailableToCustomers>false</AvailableToCustomers>
 		</EventCategory>
-		<EventCategory id="ec2">
+		<EventCategory id="EC0001">
 			<EventCategoryName>Medium</EventCategoryName>
 			<AvailableToCustomers>true</AvailableToCustomers>
 		</EventCategory>
-		<EventCategory id="ec3">
+		<EventCategory id="EC0002">
 			<EventCategoryName>Large</EventCategoryName>
 			<AvailableToCustomers>true</AvailableToCustomers>
 		</EventCategory>
 	</EventCategorys>
 
 	<Genders>
-		<Gender id="g1">
+		<Gender id="G0000">
 			<GenderName>Male</GenderName>
 		</Gender>
-		<Gender id="g2">
+		<Gender id="G0001">
 			<GenderName>Female</GenderName>
 		</Gender>
 	</Genders>
 
 	<HealthStatuses>
-		<HealthStatus id="hs1">
+		<HealthStatus id="HS0000">
 			<HealthDescription>Healthy</HealthDescription>
 		</HealthStatus>
 	</HealthStatuses>
 
 	<Sessions>
-		<Session id="s1">
+		<Session id="S0000">
 			<ItemRef id="tt1" />
 			<ItemRef id="ev1" />
 			<ItemRef id="v1" />
@@ -87,13 +87,13 @@
 	</Sessions>
 
 	<Species>
-		<Species id="sp1">
+		<Species id="SP0000">
 			<SpeciesName>Leo</SpeciesName>
 		</Species>
 	</Species>
 
 	<TicketSales>
-		<TicketSale id="ts1">
+		<TicketSale id="TS0000">
 			<Price>15.00</Price>
 			<DateSold>2025-11-05</DateSold>
 			<AppliciableFor>2025-11-12</AppliciableFor>
@@ -101,13 +101,13 @@
 	</TicketSales>
 
 	<TicketTypes>
-		<TicketType id="tt1">
+		<TicketType id="TT0000">
 			<TicketTypeName>FamilyPackage</TicketTypeName>
 		</TicketType>
 	</TicketTypes>
 
 	<Venues>
-		<Venue id="v1">
+		<Venue id="V0000">
 			<VenueName>Apatheater</VenueName>
 			<Capacity>50</Capacity>
 		</Venue>
