@@ -1,11 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace ZooAndAnimalFun.Models
 {
     public class Event
     {
       [Key]
-      public int EventId { get; set; }
+      public string EventId { get; set; }
 
       [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
       [Required]
@@ -21,11 +22,12 @@ namespace ZooAndAnimalFun.Models
       public DateTime EventEnd { get; set; }
 
       [Required]
-      public int EventCategoryID { get; set; }
+      [DeleteBehavior(DeleteBehavior.NoAction)]
+      public string EventCategoryID { get; set; }
       public virtual required EventCategory EventCategory { get; set; }
 
       [Required]
-      public int AnimalID { get; set; }
+      public string AnimalID { get; set; }
       public virtual required Animal Animal { get; set; }
     }
 }

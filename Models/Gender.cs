@@ -5,7 +5,7 @@ namespace ZooAndAnimalFun.Models
     public class Gender
     {
         [Key]
-        public int GenderID { get; set;  }
+        public string GenderID { get; set;  }
 
         public string GenderName { get; set; }
     }

@@ -40,6 +40,9 @@ public class AnimalDto
     public string Id { get; set; } = "";
     public string Name { get; set; } = "";
     public double Weight { get; set; }
+    public string GenderID { get; set; } = "";
+    public string HealthStatusID { get; set; } = "";
+    public string SpeciesID { get; set; } = "";
 }
 
 public class AnimalCategoryDto
@@ -59,7 +62,7 @@ public class CustomerDto
     public string? Address2 { get; set; } = "";
     public string City { get; set; } = "";
     public string State { get; set; } = "";
-    public int ZIP { get; set; }
+    public string ZIP { get; set; } = "";
     public string Phone { get; set; } = "";
     public string Email { get; set; } = "";
 }
@@ -79,13 +82,15 @@ public class EventDto
     public string EventName { get; set; } = "";
     public DateTime EventStart { get; set; }
     public DateTime EventEnd { get; set; }
+    public string EventCategoryID { get; set; } = "";
+    public string AnimalID { get; set; } = "";
 }
 
 public class EventCategoryDto
 {
     [XmlAttribute("id")]
     public string Id { get; set; } = "";
-    public string EventCategoryName { get; set; }
+    public string EventCategoryName { get; set; } = "";
     public bool AvailableToCustomers { get; set; }
 }
 
@@ -118,7 +123,8 @@ public class SpeciesDto
     [XmlAttribute("id")]
     public string Id { get; set; } = "";
     public string SpeciesName { get; set; } = "";
-    }
+    public string EventCategoryID { get; set; } = "";
+}
 
 public class TicketSalesDto
 {
@@ -126,7 +132,10 @@ public class TicketSalesDto
     public string Id { get; set; } = "";
     public double Price { get; set; }
     public DateTime DateSold { get; set; }
-    public DateTime AppliciableFor { get; set; }
+    public DateTime ApplicableFor { get; set; }
+    public string CustomerID { get; set; } = "";
+    public string TicketTypeID { get; set; } = "";
+    //public string SessionID { get; set; } = "";
 }
 
 public class TicketTypeDto
@@ -142,4 +151,5 @@ public class VenueDto
     public string Id { get; set; } = "";
     public string VenueName { get; set; } = "";
     public int Capacity { get; set; }
+    public string EventID { get; set; } = "";
 }

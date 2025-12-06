@@ -26,7 +26,7 @@ namespace ZooAndAnimalFun.Controllers
         }
 
         // GET: TicketSales/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string? id)
         {
             if (id == null)
             {
@@ -54,7 +54,7 @@ namespace ZooAndAnimalFun.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TicketID,price,CustomerID,DateSold,AppliciableFor,TicketTypeID,SessionID")] TicketSales ticketSales)
+        public async Task<IActionResult> Create([Bind("TicketID,price,CustomerID,DateSold,ApplicableFor,TicketTypeID,SessionID")] TicketSales ticketSales)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace ZooAndAnimalFun.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TicketID,price,CustomerID,DateSold,AppliciableFor,TicketTypeID,SessionID")] TicketSales ticketSales)
+        public async Task<IActionResult> Edit(string id, [Bind("TicketID,price,CustomerID,DateSold,ApplicableFor,TicketTypeID,SessionID")] TicketSales ticketSales)
         {
             if (id != ticketSales.TicketID)
             {
@@ -117,7 +117,7 @@ namespace ZooAndAnimalFun.Controllers
         }
 
         // GET: TicketSales/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string? id)
         {
             if (id == null)
             {
@@ -149,7 +149,7 @@ namespace ZooAndAnimalFun.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TicketSalesExists(int id)
+        private bool TicketSalesExists(string id)
         {
             return _context.TicketSales.Any(e => e.TicketID == id);
         }

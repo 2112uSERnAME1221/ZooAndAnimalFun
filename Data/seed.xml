@@ -96,7 +96,7 @@
 		<TicketSale id="TS0000">
 			<Price>15.00</Price>
 			<DateSold>2025-11-05</DateSold>
-			<AppliciableFor>2025-11-12</AppliciableFor>
+			<ApplicableFor>2025-11-12</ApplicableFor>
 		</TicketSale>
 	</TicketSales>
 

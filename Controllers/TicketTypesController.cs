@@ -26,7 +26,7 @@ namespace ZooAndAnimalFun.Controllers
         }
 
         // GET: TicketTypes/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string? id)
         {
             if (id == null)
             {
@@ -86,7 +86,7 @@ namespace ZooAndAnimalFun.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TicketTypeID,TicketTypeName")] TicketType ticketType)
+        public async Task<IActionResult> Edit(string id, [Bind("TicketTypeID,TicketTypeName")] TicketType ticketType)
         {
             if (id != ticketType.TicketTypeID)
             {
@@ -117,7 +117,7 @@ namespace ZooAndAnimalFun.Controllers
         }
 
         // GET: TicketTypes/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string? id)
         {
             if (id == null)
             {
@@ -137,7 +137,7 @@ namespace ZooAndAnimalFun.Controllers
         // POST: TicketTypes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var ticketType = await _context.TicketType.FindAsync(id);
             if (ticketType != null)
@@ -149,7 +149,7 @@ namespace ZooAndAnimalFun.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TicketTypeExists(int id)
+        private bool TicketTypeExists(string id)
         {
             return _context.TicketType.Any(e => e.TicketTypeID == id);
         }

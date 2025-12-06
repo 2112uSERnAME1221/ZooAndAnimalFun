@@ -26,7 +26,7 @@ namespace ZooAndAnimalFun.Controllers
         }
 
         // GET: Customers/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string? id)
         {
             if (id == null)
             {
@@ -86,7 +86,7 @@ namespace ZooAndAnimalFun.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CustomerID,FirstName,LastName,Address1,Address2,City,State,ZIP,Phone,Email")] Customer customer)
+        public async Task<IActionResult> Edit(string id, [Bind("CustomerID,FirstName,LastName,Address1,Address2,City,State,ZIP,Phone,Email")] Customer customer)
         {
             if (id != customer.CustomerID)
             {
@@ -117,7 +117,7 @@ namespace ZooAndAnimalFun.Controllers
         }
 
         // GET: Customers/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string? id)
         {
             if (id == null)
             {
@@ -149,7 +149,7 @@ namespace ZooAndAnimalFun.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CustomerExists(int id)
+        private bool CustomerExists(string id)
         {
             return _context.Customer.Any(e => e.CustomerID == id);
         }

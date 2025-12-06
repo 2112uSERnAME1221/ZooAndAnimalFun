@@ -7,7 +7,7 @@ namespace ZooAndAnimalFun.Models
     public class Animal
     {
       [Key]
-      public int AnimalID { get; set; }
+      public string AnimalID { get; set; }
 
       [Required]
       [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
@@ -19,15 +19,15 @@ namespace ZooAndAnimalFun.Models
       public double Weight { get; set; }
 
       [Required]
-      public int GenderID { get; set; }      
+      public string GenderID { get; set; }    
       public virtual required Gender Gender { get; set; }
 
       [Required]
-      public int HealthStatusID { get; set; }
-      public virtual required HealthStatus HealthStatus { get; set; }
+      public string HealthStatusID { get; set; }
+       public virtual required HealthStatus HealthStatus { get; set; }
 
       [Required]
-      public int SpeciesID { get; set; }
+      public string SpeciesID { get; set; }
       public virtual required Species Species { get; set; }
     }
 }

@@ -26,7 +26,7 @@ namespace ZooAndAnimalFun.Controllers
         }
 
         // GET: Species/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string? id)
         {
             if (id == null)
             {
@@ -86,7 +86,7 @@ namespace ZooAndAnimalFun.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("SpeciesID,SpeciesName,CategoryID")] Species species)
+        public async Task<IActionResult> Edit(string id, [Bind("SpeciesID,SpeciesName,CategoryID")] Species species)
         {
             if (id != species.SpeciesID)
             {
@@ -117,7 +117,7 @@ namespace ZooAndAnimalFun.Controllers
         }
 
         // GET: Species/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string? id)
         {
             if (id == null)
             {
@@ -149,7 +149,7 @@ namespace ZooAndAnimalFun.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool SpeciesExists(int id)
+        private bool SpeciesExists(string id)
         {
             return _context.Species.Any(e => e.SpeciesID == id);
         }

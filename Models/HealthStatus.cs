@@ -5,7 +5,7 @@ namespace ZooAndAnimalFun.Models
     public class HealthStatus
     {
         [Key]
-        public int HealthStatusId { get; set; }
+        public string HealthStatusId { get; set; }
 
         
         [Required]

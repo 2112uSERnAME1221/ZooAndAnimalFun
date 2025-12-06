@@ -26,7 +26,7 @@ namespace ZooAndAnimalFun.Controllers
         }
 
         // GET: Genders/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string? id)
         {
             if (id == null)
             {
@@ -86,7 +86,7 @@ namespace ZooAndAnimalFun.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("GenderID,GenderName")] Gender gender)
+        public async Task<IActionResult> Edit(string id, [Bind("GenderID,GenderName")] Gender gender)
         {
             if (id != gender.GenderID)
             {
@@ -117,7 +117,7 @@ namespace ZooAndAnimalFun.Controllers
         }
 
         // GET: Genders/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string? id)
         {
             if (id == null)
             {
@@ -149,7 +149,7 @@ namespace ZooAndAnimalFun.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool GenderExists(int id)
+        private bool GenderExists(string id)
         {
             return _context.Gender.Any(e => e.GenderID == id);
         }

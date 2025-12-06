@@ -5,7 +5,7 @@ namespace ZooAndAnimalFun.Models
     public class Species
     {
       [Key]
-      public int SpeciesID { get; set; }
+      public string SpeciesID { get; set; }
 
       [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
       [MaxLength(50)]
@@ -13,7 +13,7 @@ namespace ZooAndAnimalFun.Models
       public string SpeciesName { get; set; }
 
      [Required]
-     public int CategoryID { get; set; }
-     public virtual required Category Category { get; set; }
+     public string EventCategoryID { get; set; }
+     public virtual required EventCategory EventCategory { get; set; }
     }
 }

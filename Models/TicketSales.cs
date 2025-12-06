@@ -6,7 +6,7 @@ namespace ZooAndAnimalFun.Models
     public class TicketSales
     {
       [Key]
-      public int TicketID { get; set; }
+      public string TicketID { get; set; }
 
       [Range(1, 100)]
       [DataType(DataType.Currency)]
@@ -19,18 +19,19 @@ namespace ZooAndAnimalFun.Models
 
       [Display(Name = "When Available")]
       [DataType(DataType.Date)]
-      public DateTime AppliciableFor { get; set; }
+      public DateTime ApplicableFor { get; set; }
 
       [Required]
-      public int CustomerID { get; set; }
+      public string CustomerID { get; set; }
       public virtual required Customer Customer { get; set; }
 
       [Required]
-      public int TicketTypeID { get; set; }
+      public string TicketTypeID { get; set; }
       public virtual required TicketType TicketType { get; set; }
 
+        /*
       [Required]
-      public int SessionID { get; set; }
-      public virtual required Session Session { get; set; }
+      public string SessionID { get; set; }
+      public virtual required Session Session { get; set; }*/
     }
 }

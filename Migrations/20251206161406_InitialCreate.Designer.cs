@@ -12,7 +12,7 @@ using ZooAndAnimalFun.Data;
 namespace ZooAndAnimalFun.Migrations
 {
     [DbContext(typeof(ZooAndAnimalFunContext))]
-    [Migration("20251129220544_InitialCreate")]
+    [Migration("20251206161406_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -27,25 +27,25 @@ namespace ZooAndAnimalFun.Migrations
 
             modelBuilder.Entity("ZooAndAnimalFun.Models.Animal", b =>
                 {
-                    b.Property<int>("AnimalID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("AnimalID")
+                        .HasColumnType("nvarchar(450)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AnimalID"));
+                    b.Property<string>("GenderID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("GenderID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("HealthStatusID")
-                        .HasColumnType("int");
+                    b.Property<string>("HealthStatusID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<int>("SpeciesID")
-                        .HasColumnType("int");
+                    b.Property<string>("SpeciesID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<decimal>("Weight")
                         .HasColumnType("decimal(18, 2)");
@@ -54,16 +54,17 @@ namespace ZooAndAnimalFun.Migrations
 
                     b.HasIndex("GenderID");
 
+                    b.HasIndex("HealthStatusID");
+
+                    b.HasIndex("SpeciesID");
+
                     b.ToTable("Animal");
                 });
 
             modelBuilder.Entity("ZooAndAnimalFun.Models.AnimalCategories", b =>
                 {
-                    b.Property<int>("CategoryID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryID"));
+                    b.Property<string>("CategoryID")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CategoryName")
                         .IsRequired()
@@ -77,11 +78,8 @@ namespace ZooAndAnimalFun.Migrations
 
             modelBuilder.Entity("ZooAndAnimalFun.Models.Customer", b =>
                 {
-                    b.Property<int>("CustomerID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomerID"));
+                    b.Property<string>("CustomerID")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Address1")
                         .IsRequired()
@@ -120,8 +118,9 @@ namespace ZooAndAnimalFun.Migrations
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
-                    b.Property<int>("ZIP")
-                        .HasColumnType("int");
+                    b.Property<string>("ZIP")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CustomerID");
 
@@ -130,11 +129,8 @@ namespace ZooAndAnimalFun.Migrations
 
             modelBuilder.Entity("ZooAndAnimalFun.Models.Employee", b =>
                 {
-                    b.Property<int>("EmployeeID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmployeeID"));
+                    b.Property<string>("EmployeeID")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -153,17 +149,16 @@ namespace ZooAndAnimalFun.Migrations
 
             modelBuilder.Entity("ZooAndAnimalFun.Models.Event", b =>
                 {
-                    b.Property<int>("EventId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("EventId")
+                        .HasColumnType("nvarchar(450)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EventId"));
+                    b.Property<string>("AnimalID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("AnimalID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("EventCategoryID")
-                        .HasColumnType("int");
+                    b.Property<string>("EventCategoryID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("EventEnd")
                         .HasColumnType("datetime2");
@@ -178,16 +173,17 @@ namespace ZooAndAnimalFun.Migrations
 
                     b.HasKey("EventId");
 
+                    b.HasIndex("AnimalID");
+
+                    b.HasIndex("EventCategoryID");
+
                     b.ToTable("Event");
                 });
 
             modelBuilder.Entity("ZooAndAnimalFun.Models.EventCategory", b =>
                 {
-                    b.Property<int>("EventCategoryID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EventCategoryID"));
+                    b.Property<string>("EventCategoryID")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("AvailableToCustomers")
                         .HasColumnType("bit");
@@ -204,11 +200,8 @@ namespace ZooAndAnimalFun.Migrations
 
             modelBuilder.Entity("ZooAndAnimalFun.Models.Gender", b =>
                 {
-                    b.Property<int>("GenderID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GenderID"));
+                    b.Property<string>("GenderID")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("GenderName")
                         .IsRequired()
@@ -221,11 +214,8 @@ namespace ZooAndAnimalFun.Migrations
 
             modelBuilder.Entity("ZooAndAnimalFun.Models.HealthStatus", b =>
                 {
-                    b.Property<int>("HealthStatusId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HealthStatusId"));
+                    b.Property<string>("HealthStatusId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("HealthDescription")
                         .IsRequired()
@@ -238,39 +228,44 @@ namespace ZooAndAnimalFun.Migrations
 
             modelBuilder.Entity("ZooAndAnimalFun.Models.Session", b =>
                 {
-                    b.Property<int>("SessionID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SessionID"));
+                    b.Property<string>("SessionID")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("EventID")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("TicketID")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("TicketSalesTicketID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("VenueID")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("SessionID");
+
+                    b.HasIndex("EventID");
+
+                    b.HasIndex("TicketSalesTicketID");
+
+                    b.HasIndex("VenueID");
 
                     b.ToTable("Session");
                 });
 
             modelBuilder.Entity("ZooAndAnimalFun.Models.Species", b =>
                 {
-                    b.Property<int>("SpeciesID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("SpeciesID")
+                        .HasColumnType("nvarchar(450)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SpeciesID"));
-
-                    b.Property<int>("CategoryID")
-                        .HasColumnType("int");
+                    b.Property<string>("EventCategoryID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("SpeciesName")
                         .IsRequired()
@@ -279,22 +274,22 @@ namespace ZooAndAnimalFun.Migrations
 
                     b.HasKey("SpeciesID");
 
+                    b.HasIndex("EventCategoryID");
+
                     b.ToTable("Species");
                 });
 
             modelBuilder.Entity("ZooAndAnimalFun.Models.TicketSales", b =>
                 {
-                    b.Property<int>("TicketID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("TicketID")
+                        .HasColumnType("nvarchar(450)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TicketID"));
-
-                    b.Property<DateTime>("AppliciableFor")
+                    b.Property<DateTime>("ApplicableFor")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("CustomerID")
-                        .HasColumnType("int");
+                    b.Property<string>("CustomerID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("DateSold")
                         .HasColumnType("datetime2");
@@ -302,24 +297,23 @@ namespace ZooAndAnimalFun.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18, 2)");
 
-                    b.Property<int>("SessionID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TicketTypeID")
-                        .HasColumnType("int");
+                    b.Property<string>("TicketTypeID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("TicketID");
+
+                    b.HasIndex("CustomerID");
+
+                    b.HasIndex("TicketTypeID");
 
                     b.ToTable("TicketSales");
                 });
 
             modelBuilder.Entity("ZooAndAnimalFun.Models.TicketType", b =>
                 {
-                    b.Property<int>("TicketTypeID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TicketTypeID"));
+                    b.Property<string>("TicketTypeID")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("TicketTypeName")
                         .IsRequired()
@@ -332,20 +326,23 @@ namespace ZooAndAnimalFun.Migrations
 
             modelBuilder.Entity("ZooAndAnimalFun.Models.Venue", b =>
                 {
-                    b.Property<int>("VenueID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("VenueID"));
+                    b.Property<string>("VenueID")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Capacity")
                         .HasColumnType("int");
+
+                    b.Property<string>("EventID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("VenueName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("VenueID");
+
+                    b.HasIndex("EventID");
 
                     b.ToTable("Venue");
                 });
@@ -358,7 +355,110 @@ namespace ZooAndAnimalFun.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("ZooAndAnimalFun.Models.HealthStatus", "HealthStatus")
+                        .WithMany()
+                        .HasForeignKey("HealthStatusID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ZooAndAnimalFun.Models.Species", "Species")
+                        .WithMany()
+                        .HasForeignKey("SpeciesID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Gender");
+
+                    b.Navigation("HealthStatus");
+
+                    b.Navigation("Species");
+                });
+
+            modelBuilder.Entity("ZooAndAnimalFun.Models.Event", b =>
+                {
+                    b.HasOne("ZooAndAnimalFun.Models.Animal", "Animal")
+                        .WithMany()
+                        .HasForeignKey("AnimalID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ZooAndAnimalFun.Models.EventCategory", "EventCategory")
+                        .WithMany()
+                        .HasForeignKey("EventCategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Animal");
+
+                    b.Navigation("EventCategory");
+                });
+
+            modelBuilder.Entity("ZooAndAnimalFun.Models.Session", b =>
+                {
+                    b.HasOne("ZooAndAnimalFun.Models.Event", "Event")
+                        .WithMany()
+                        .HasForeignKey("EventID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ZooAndAnimalFun.Models.TicketSales", "TicketSales")
+                        .WithMany()
+                        .HasForeignKey("TicketSalesTicketID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ZooAndAnimalFun.Models.Venue", "Venue")
+                        .WithMany()
+                        .HasForeignKey("VenueID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Event");
+
+                    b.Navigation("TicketSales");
+
+                    b.Navigation("Venue");
+                });
+
+            modelBuilder.Entity("ZooAndAnimalFun.Models.Species", b =>
+                {
+                    b.HasOne("ZooAndAnimalFun.Models.EventCategory", "EventCategory")
+                        .WithMany()
+                        .HasForeignKey("EventCategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("EventCategory");
+                });
+
+            modelBuilder.Entity("ZooAndAnimalFun.Models.TicketSales", b =>
+                {
+                    b.HasOne("ZooAndAnimalFun.Models.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ZooAndAnimalFun.Models.TicketType", "TicketType")
+                        .WithMany()
+                        .HasForeignKey("TicketTypeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("TicketType");
+                });
+
+            modelBuilder.Entity("ZooAndAnimalFun.Models.Venue", b =>
+                {
+                    b.HasOne("ZooAndAnimalFun.Models.Event", "Event")
+                        .WithMany()
+                        .HasForeignKey("EventID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Event");
                 });
 #pragma warning restore 612, 618
         }

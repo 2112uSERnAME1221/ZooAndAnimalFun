@@ -5,7 +5,7 @@ namespace ZooAndAnimalFun.Models
     public class EventCategory
     {
       [Key]
-      public int EventCategoryID{ get; set; }
+      public string EventCategoryID{ get; set; }
 
       [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
       [Required]

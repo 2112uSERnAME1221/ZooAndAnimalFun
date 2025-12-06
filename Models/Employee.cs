@@ -5,7 +5,7 @@ namespace ZooAndAnimalFun.Models
     public class Employee
     {
       [Key]
-      public int EmployeeID { get; set; }
+      public string EmployeeID { get; set; }
 
       [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
       [MaxLength(50)]
