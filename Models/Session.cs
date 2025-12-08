@@ -13,9 +13,5 @@ namespace ZooAndAnimalFun.Models
       [Required]
       public string VenueID { get; set; }
       public virtual required Venue Venue { get; set; }
-
-      [Required]
-      public string TicketID { get; set; }
-      public virtual required TicketSales TicketSales { get; set; }
     }
 }

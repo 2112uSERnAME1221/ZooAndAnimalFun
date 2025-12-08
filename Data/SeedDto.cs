@@ -112,7 +112,6 @@ public class SessionDto
 {
     [XmlAttribute("id")]
     public string Id { get; set; } = "";
-    public string TicketID { get; set; } = "";
     public string EventID { get; set; } = "";
     public string VenueID { get; set; }  = "";
 

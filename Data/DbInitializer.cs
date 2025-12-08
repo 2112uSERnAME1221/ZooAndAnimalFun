@@ -139,7 +139,6 @@ namespace ZooAndAnimalFun.Data
                    x => x.Id,
                    x => new Session
                    {
-                       TicketSales = ticketSalesDict[x.TicketID],
                        Event = eventDict[x.EventID],
                        Venue = venueDict[x.VenueID]
                    }

@@ -66,7 +66,7 @@ namespace ZooAndAnimalFun.Controllers
         }
 
         // GET: Genders/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string? id)
         {
             if (id == null)
             {
@@ -137,7 +137,7 @@ namespace ZooAndAnimalFun.Controllers
         // POST: Genders/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var gender = await _context.Gender.FindAsync(id);
             if (gender != null)

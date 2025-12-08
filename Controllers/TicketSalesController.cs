@@ -66,7 +66,7 @@ namespace ZooAndAnimalFun.Controllers
         }
 
         // GET: TicketSales/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string? id)
         {
             if (id == null)
             {
@@ -137,7 +137,7 @@ namespace ZooAndAnimalFun.Controllers
         // POST: TicketSales/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var ticketSales = await _context.TicketSales.FindAsync(id);
             if (ticketSales != null)

@@ -4,6 +4,9 @@
 		<Animal id="A0000">
 			<Name>Wallace</Name>
 			<Weight>1500.00</Weight>
+			<ItemRef id="G0000" />
+			<ItemRef id="HS0000" />
+			<ItemRef id="SP0000" />
 		</Animal>
 	</Animals>
 
@@ -45,6 +48,8 @@
 			<EventName>12PM Mega Event</EventName>
 			<EventStart>2025-11-10T10:00:00</EventStart>
 			<EventEnd>2025-11-10T13:00:00</EventEnd>
+			<ItemRef id="EC0001" />
+			<ItemRef id="A0000" />
 		</Event>
 	</Events>
 
@@ -80,15 +85,17 @@
 
 	<Sessions>
 		<Session id="S0000">
-			<ItemRef id="tt1" />
-			<ItemRef id="ev1" />
-			<ItemRef id="v1" />
+			<ItemRef id="TT0000" />
+			<ItemRef id="EV0000" />
+			<ItemRef id="V0000" />
 		</Session>		
 	</Sessions>
 
 	<Species>
 		<Species id="SP0000">
 			<SpeciesName>Leo</SpeciesName>
+			<ItemRef id="SP0000" />
+			<ItemRef id="EC0000" />
 		</Species>
 	</Species>
 
@@ -97,6 +104,8 @@
 			<Price>15.00</Price>
 			<DateSold>2025-11-05</DateSold>
 			<ApplicableFor>2025-11-12</ApplicableFor>
+			<ItemRef id="EC0000" />
+			<ItemRef id="TT0000" />
 		</TicketSale>
 	</TicketSales>
 
@@ -107,9 +116,10 @@
 	</TicketTypes>
 
 	<Venues>
-		<Venue id="V0000">
+		<Venue id="EV0000">
 			<VenueName>Apatheater</VenueName>
 			<Capacity>50</Capacity>
+			<ItemRef id="TT0000" />
 		</Venue>
 	</Venues>
 
