@@ -4,20 +4,20 @@
 		<Animal id="A0000">
 			<Name>Wallace</Name>
 			<Weight>1500.00</Weight>
-			<ItemRef id="G0000" />
-			<ItemRef id="HS0000" />
-			<ItemRef id="SP0000" />
+			<GenderID>G0000</GenderID>
+			<HealthStatusID>HS0000</HealthStatusID>
+			<SpeciesID>SP0000</SpeciesID>
 		</Animal>
 	</Animals>
 
 	<AnimalCategories>
-		<AnimalCategory id="AC0001">
+		<AnimalCategory id="AC0000">
 			<CategoryName>Land Mammal</CategoryName>
 		</AnimalCategory>
-		<AnimalCategory id="AC0002">
+		<AnimalCategory id="AC0001">
 			<CategoryName>Aquatic Creature</CategoryName>
 		</AnimalCategory>
-		<AnimalCategory id="AC0003">
+		<AnimalCategory id="AC0002">
 			<CategoryName>Avian Creature</CategoryName>
 		</AnimalCategory>
 	</AnimalCategories>
@@ -44,12 +44,12 @@
 	</Employees>
 
 	<Events>
-		<Event id="EV0001">
+		<Event id="EV0000">
 			<EventName>12PM Mega Event</EventName>
 			<EventStart>2025-11-10T10:00:00</EventStart>
 			<EventEnd>2025-11-10T13:00:00</EventEnd>
-			<ItemRef id="EC0001" />
-			<ItemRef id="A0000" />
+			<EventCategoryID>EC0001</EventCategoryID>
+			<AnimalID>A0000</AnimalID>
 		</Event>
 	</Events>
 
@@ -85,17 +85,16 @@
 
 	<Sessions>
 		<Session id="S0000">
-			<ItemRef id="TT0000" />
-			<ItemRef id="EV0000" />
-			<ItemRef id="V0000" />
+			<TicketTypeID>TT0000</TicketTypeID>
+			<EventID>EV0000</EventID>
+			<VenueID>V0000</VenueID>
 		</Session>		
 	</Sessions>
 
 	<Species>
 		<Species id="SP0000">
 			<SpeciesName>Leo</SpeciesName>
-			<ItemRef id="SP0000" />
-			<ItemRef id="EC0000" />
+			<EventCategoryID>EC0000</EventCategoryID>
 		</Species>
 	</Species>
 
@@ -104,8 +103,10 @@
 			<Price>15.00</Price>
 			<DateSold>2025-11-05</DateSold>
 			<ApplicableFor>2025-11-12</ApplicableFor>
-			<ItemRef id="EC0000" />
-			<ItemRef id="TT0000" />
+			<EventCategoryID>EC0000</EventCategoryID>
+			<TicketTypeID>TT0000</TicketTypeID>
+			<CustomerID>C0000</CustomerID>
+			<SessionID>S0000</SessionID>
 		</TicketSale>
 	</TicketSales>
 
@@ -116,10 +117,11 @@
 	</TicketTypes>
 
 	<Venues>
-		<Venue id="EV0000">
+		<Venue id="V0000">
 			<VenueName>Apatheater</VenueName>
 			<Capacity>50</Capacity>
-			<ItemRef id="TT0000" />
+			<TicketTypeID>TT0000</TicketTypeID>
+			<EventID>EV0000</EventID>
 		</Venue>
 	</Venues>
 

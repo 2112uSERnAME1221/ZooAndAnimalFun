@@ -88,7 +88,7 @@ namespace ZooAndAnimalFun.Data
                     );
                 Dictionary<string, Animal> animalDict = seed.Animals.ToDictionary(
                     x => x.Id,
-                    x => new Animal
+                    x => new Animal 
                     {
                         Name = x.Name,
                         Weight = x.Weight,
@@ -115,17 +115,6 @@ namespace ZooAndAnimalFun.Data
                        TicketTypeName = x.TicketTypeName
                    }
                    );
-                Dictionary<string, TicketSales> ticketSalesDict = seed.TicketSales.ToDictionary(
-                   x => x.Id,
-                   x => new TicketSales
-                   {
-                       Price = x.Price,
-                       DateSold = x.DateSold,
-                       ApplicableFor = x.ApplicableFor,
-                       Customer = customerDict[x.CustomerID],
-                       TicketType = ticketTypeDict[x.TicketTypeID]
-                   }
-                   );
                 Dictionary<string, Venue> venueDict = seed.Venues.ToDictionary(
                    x => x.Id,
                    x => new Venue
@@ -141,6 +130,18 @@ namespace ZooAndAnimalFun.Data
                    {
                        Event = eventDict[x.EventID],
                        Venue = venueDict[x.VenueID]
+                   }
+                   );
+                Dictionary<string, TicketSales> ticketSalesDict = seed.TicketSales.ToDictionary(
+                   x => x.Id,
+                   x => new TicketSales
+                   {
+                       Price = x.Price,
+                       DateSold = x.DateSold,
+                       ApplicableFor = x.ApplicableFor,
+                       Customer = customerDict[x.CustomerID],
+                       TicketType = ticketTypeDict[x.TicketTypeID],
+                       Session = sessionDict[x.SessionID]
                    }
                    );
                 /*

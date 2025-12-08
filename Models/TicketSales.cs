@@ -29,9 +29,8 @@ namespace ZooAndAnimalFun.Models
       public string TicketTypeID { get; set; }
       public virtual required TicketType TicketType { get; set; }
 
-        /*
       [Required]
       public string SessionID { get; set; }
-      public virtual required Session Session { get; set; }*/
+      public virtual required Session Session { get; set; }
     }
 }

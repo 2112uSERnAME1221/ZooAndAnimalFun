@@ -40,7 +40,7 @@ namespace ZooAndAnimalFun.Models
       [Required]
       public string ZIP { get; set; }
 
-      [RegularExpression(@"^[0-9]{10}$")]
+      [RegularExpression(@"^[0-9]{3}-[0-9]{3}-[0-9]{4}$")]
       [Required]
       public string Phone{ get; set; }
 

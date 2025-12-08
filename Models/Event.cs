@@ -22,8 +22,8 @@ namespace ZooAndAnimalFun.Models
       public DateTime EventEnd { get; set; }
 
       [Required]
-      [DeleteBehavior(DeleteBehavior.NoAction)]
       public string EventCategoryID { get; set; }
+      [DeleteBehavior(DeleteBehavior.NoAction)]
       public virtual required EventCategory EventCategory { get; set; }
 
       [Required]

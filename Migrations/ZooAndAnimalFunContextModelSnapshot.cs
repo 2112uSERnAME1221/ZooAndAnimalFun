@@ -24,7 +24,7 @@ namespace ZooAndAnimalFun.Migrations
 
             modelBuilder.Entity("ZooAndAnimalFun.Models.Animal", b =>
                 {
-                    b.Property<string>("AnimalID")
+                    b.Property<string>("ID")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("GenderID")
@@ -47,7 +47,7 @@ namespace ZooAndAnimalFun.Migrations
                     b.Property<decimal>("Weight")
                         .HasColumnType("decimal(18, 2)");
 
-                    b.HasKey("AnimalID");
+                    b.HasKey("ID");
 
                     b.HasIndex("GenderID");
 
@@ -232,14 +232,6 @@ namespace ZooAndAnimalFun.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("TicketID")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TicketSalesTicketID")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("VenueID")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -247,8 +239,6 @@ namespace ZooAndAnimalFun.Migrations
                     b.HasKey("SessionID");
 
                     b.HasIndex("EventID");
-
-                    b.HasIndex("TicketSalesTicketID");
 
                     b.HasIndex("VenueID");
 
@@ -294,6 +284,10 @@ namespace ZooAndAnimalFun.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18, 2)");
 
+                    b.Property<string>("SessionID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("TicketTypeID")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -301,6 +295,8 @@ namespace ZooAndAnimalFun.Migrations
                     b.HasKey("TicketID");
 
                     b.HasIndex("CustomerID");
+
+                    b.HasIndex("SessionID");
 
                     b.HasIndex("TicketTypeID");
 
@@ -382,7 +378,7 @@ namespace ZooAndAnimalFun.Migrations
                     b.HasOne("ZooAndAnimalFun.Models.EventCategory", "EventCategory")
                         .WithMany()
                         .HasForeignKey("EventCategoryID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Animal");
@@ -398,21 +394,13 @@ namespace ZooAndAnimalFun.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ZooAndAnimalFun.Models.TicketSales", "TicketSales")
-                        .WithMany()
-                        .HasForeignKey("TicketSalesTicketID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("ZooAndAnimalFun.Models.Venue", "Venue")
                         .WithMany()
                         .HasForeignKey("VenueID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Event");
-
-                    b.Navigation("TicketSales");
 
                     b.Navigation("Venue");
                 });
@@ -436,6 +424,12 @@ namespace ZooAndAnimalFun.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("ZooAndAnimalFun.Models.Session", "Session")
+                        .WithMany("TicketSales")
+                        .HasForeignKey("SessionID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ZooAndAnimalFun.Models.TicketType", "TicketType")
                         .WithMany()
                         .HasForeignKey("TicketTypeID")
@@ -443,6 +437,8 @@ namespace ZooAndAnimalFun.Migrations
                         .IsRequired();
 
                     b.Navigation("Customer");
+
+                    b.Navigation("Session");
 
                     b.Navigation("TicketType");
                 });
@@ -456,6 +452,11 @@ namespace ZooAndAnimalFun.Migrations
                         .IsRequired();
 
                     b.Navigation("Event");
+                });
+
+            modelBuilder.Entity("ZooAndAnimalFun.Models.Session", b =>
+                {
+                    b.Navigation("TicketSales");
                 });
 #pragma warning restore 612, 618
         }

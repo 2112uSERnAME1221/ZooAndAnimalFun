@@ -125,38 +125,10 @@ namespace ZooAndAnimalFun.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TicketSales",
-                columns: table => new
-                {
-                    TicketID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    DateSold = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ApplicableFor = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CustomerID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    TicketTypeID = table.Column<string>(type: "nvarchar(450)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TicketSales", x => x.TicketID);
-                    table.ForeignKey(
-                        name: "FK_TicketSales_Customer_CustomerID",
-                        column: x => x.CustomerID,
-                        principalTable: "Customer",
-                        principalColumn: "CustomerID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_TicketSales_TicketType_TicketTypeID",
-                        column: x => x.TicketTypeID,
-                        principalTable: "TicketType",
-                        principalColumn: "TicketTypeID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Animal",
                 columns: table => new
                 {
-                    AnimalID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     Weight = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     GenderID = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -165,7 +137,7 @@ namespace ZooAndAnimalFun.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Animal", x => x.AnimalID);
+                    table.PrimaryKey("PK_Animal", x => x.ID);
                     table.ForeignKey(
                         name: "FK_Animal_Gender_GenderID",
                         column: x => x.GenderID,
@@ -204,14 +176,13 @@ namespace ZooAndAnimalFun.Migrations
                         name: "FK_Event_Animal_AnimalID",
                         column: x => x.AnimalID,
                         principalTable: "Animal",
-                        principalColumn: "AnimalID",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Event_EventCategory_EventCategoryID",
                         column: x => x.EventCategoryID,
                         principalTable: "EventCategory",
-                        principalColumn: "EventCategoryID",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "EventCategoryID");
                 });
 
             migrationBuilder.CreateTable(
@@ -240,9 +211,7 @@ namespace ZooAndAnimalFun.Migrations
                 {
                     SessionID = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     EventID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    VenueID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    TicketID = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TicketSalesTicketID = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    VenueID = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -254,16 +223,44 @@ namespace ZooAndAnimalFun.Migrations
                         principalColumn: "EventId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Session_TicketSales_TicketSalesTicketID",
-                        column: x => x.TicketSalesTicketID,
-                        principalTable: "TicketSales",
-                        principalColumn: "TicketID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_Session_Venue_VenueID",
                         column: x => x.VenueID,
                         principalTable: "Venue",
-                        principalColumn: "VenueID",
+                        principalColumn: "VenueID");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TicketSales",
+                columns: table => new
+                {
+                    TicketID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    DateSold = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ApplicableFor = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CustomerID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    TicketTypeID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    SessionID = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TicketSales", x => x.TicketID);
+                    table.ForeignKey(
+                        name: "FK_TicketSales_Customer_CustomerID",
+                        column: x => x.CustomerID,
+                        principalTable: "Customer",
+                        principalColumn: "CustomerID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TicketSales_Session_SessionID",
+                        column: x => x.SessionID,
+                        principalTable: "Session",
+                        principalColumn: "SessionID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TicketSales_TicketType_TicketTypeID",
+                        column: x => x.TicketTypeID,
+                        principalTable: "TicketType",
+                        principalColumn: "TicketTypeID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -298,11 +295,6 @@ namespace ZooAndAnimalFun.Migrations
                 column: "EventID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Session_TicketSalesTicketID",
-                table: "Session",
-                column: "TicketSalesTicketID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Session_VenueID",
                 table: "Session",
                 column: "VenueID");
@@ -316,6 +308,11 @@ namespace ZooAndAnimalFun.Migrations
                 name: "IX_TicketSales_CustomerID",
                 table: "TicketSales",
                 column: "CustomerID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TicketSales_SessionID",
+                table: "TicketSales",
+                column: "SessionID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TicketSales_TicketTypeID",
@@ -338,19 +335,19 @@ namespace ZooAndAnimalFun.Migrations
                 name: "Employee");
 
             migrationBuilder.DropTable(
-                name: "Session");
-
-            migrationBuilder.DropTable(
                 name: "TicketSales");
-
-            migrationBuilder.DropTable(
-                name: "Venue");
 
             migrationBuilder.DropTable(
                 name: "Customer");
 
             migrationBuilder.DropTable(
+                name: "Session");
+
+            migrationBuilder.DropTable(
                 name: "TicketType");
+
+            migrationBuilder.DropTable(
+                name: "Venue");
 
             migrationBuilder.DropTable(
                 name: "Event");

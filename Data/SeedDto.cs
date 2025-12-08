@@ -134,7 +134,7 @@ public class TicketSalesDto
     public DateTime ApplicableFor { get; set; }
     public string CustomerID { get; set; } = "";
     public string TicketTypeID { get; set; } = "";
-    //public string SessionID { get; set; } = "";
+    public string SessionID { get; set; } = "";
 }
 
 public class TicketTypeDto
