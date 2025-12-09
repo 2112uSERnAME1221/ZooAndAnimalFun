@@ -22,6 +22,11 @@ namespace ZooAndAnimalFun.Controllers
         // GET: TicketSales
         public async Task<IActionResult> Index()
         {
+            var animals = _context.TicketSales
+                .Include(a => a.Customer)
+                .Include(a => a.TicketType)
+                .Include(a => a.Session);
+
             return View(await _context.TicketSales.ToListAsync());
         }
 

@@ -13,7 +13,6 @@ namespace ZooAndAnimalFun.Models
 
         [Required]
         public string VenueID { get; set; }
-        [DeleteBehavior(DeleteBehavior.NoAction)]
         public virtual required Venue Venue { get; set; }
 
         public virtual ICollection<TicketSales> TicketSales { get; set; } = new List<TicketSales>();

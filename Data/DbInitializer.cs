@@ -30,6 +30,7 @@ namespace ZooAndAnimalFun.Data
                     x => x.Id,
                     x => new AnimalCategories
                     {
+                        CategoryID = x.Id,
                         CategoryName = x.CategoryName
                     }
                     );
@@ -37,6 +38,7 @@ namespace ZooAndAnimalFun.Data
                     x => x.Id,
                     x => new Customer
                     {
+                        CustomerID = x.Id,
                         FirstName = x.FirstName,
                         LastName = x.LastName,
                         Address1 = x.Address1,
@@ -52,6 +54,7 @@ namespace ZooAndAnimalFun.Data
                     x => x.Id,
                     x => new Employee
                     {
+                        EmployeeID = x.Id,
                         FirstName = x.FirstName,
                         LastName = x.LastName
                     }
@@ -60,6 +63,7 @@ namespace ZooAndAnimalFun.Data
                     x => x.Id,
                     x => new EventCategory
                     {
+                        EventCategoryID = x.Id,
                         EventCategoryName = x.EventCategoryName,
                         AvailableToCustomers = x.AvailableToCustomers
                     }
@@ -68,6 +72,7 @@ namespace ZooAndAnimalFun.Data
                     x => x.Id,
                     x => new Gender
                     {
+                        GenderID = x.Id,
                         GenderName = x.GenderName
                     }
                     );
@@ -75,6 +80,7 @@ namespace ZooAndAnimalFun.Data
                     x => x.Id,
                     x => new HealthStatus
                     {
+                        HealthStatusId = x.Id,
                         HealthDescription = x.HealthDescription
                     }
                     );
@@ -82,6 +88,7 @@ namespace ZooAndAnimalFun.Data
                     x => x.Id,
                     x => new Species
                     {
+                        SpeciesID = x.Id,
                         SpeciesName = x.SpeciesName,
                         EventCategory = eventCategoryDict[x.EventCategoryID]
                     }
@@ -90,6 +97,7 @@ namespace ZooAndAnimalFun.Data
                     x => x.Id,
                     x => new Animal 
                     {
+                        AnimalID = x.Id,
                         Name = x.Name,
                         Weight = x.Weight,
                         Gender = genderDict[x.GenderID],
@@ -101,6 +109,7 @@ namespace ZooAndAnimalFun.Data
                     x => x.Id,
                     x => new Event
                     {
+                        EventID = x.Id,
                         EventName = x.EventName,
                         EventStart = x.EventStart,
                         EventEnd = x.EventEnd,
@@ -112,6 +121,7 @@ namespace ZooAndAnimalFun.Data
                    x => x.Id,
                    x => new TicketType
                    {
+                       TicketTypeID = x.Id,
                        TicketTypeName = x.TicketTypeName
                    }
                    );
@@ -119,6 +129,7 @@ namespace ZooAndAnimalFun.Data
                    x => x.Id,
                    x => new Venue
                    {
+                       VenueID = x.Id,
                        VenueName = x.VenueName,
                        Capacity = x.Capacity,
                        Event = eventDict[x.EventID]
@@ -128,6 +139,7 @@ namespace ZooAndAnimalFun.Data
                    x => x.Id,
                    x => new Session
                    {
+                       SessionID = x.Id,
                        Event = eventDict[x.EventID],
                        Venue = venueDict[x.VenueID]
                    }
@@ -136,6 +148,7 @@ namespace ZooAndAnimalFun.Data
                    x => x.Id,
                    x => new TicketSales
                    {
+                       TicketID = x.Id,
                        Price = x.Price,
                        DateSold = x.DateSold,
                        ApplicableFor = x.ApplicableFor,

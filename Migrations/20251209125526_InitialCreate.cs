@@ -128,7 +128,7 @@ namespace ZooAndAnimalFun.Migrations
                 name: "Animal",
                 columns: table => new
                 {
-                    ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    AnimalID = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     Weight = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     GenderID = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -137,7 +137,7 @@ namespace ZooAndAnimalFun.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Animal", x => x.ID);
+                    table.PrimaryKey("PK_Animal", x => x.AnimalID);
                     table.ForeignKey(
                         name: "FK_Animal_Gender_GenderID",
                         column: x => x.GenderID,
@@ -162,7 +162,7 @@ namespace ZooAndAnimalFun.Migrations
                 name: "Event",
                 columns: table => new
                 {
-                    EventId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    EventID = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     EventName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     EventStart = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EventEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -171,18 +171,19 @@ namespace ZooAndAnimalFun.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Event", x => x.EventId);
+                    table.PrimaryKey("PK_Event", x => x.EventID);
                     table.ForeignKey(
                         name: "FK_Event_Animal_AnimalID",
                         column: x => x.AnimalID,
                         principalTable: "Animal",
-                        principalColumn: "ID",
+                        principalColumn: "AnimalID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Event_EventCategory_EventCategoryID",
                         column: x => x.EventCategoryID,
                         principalTable: "EventCategory",
-                        principalColumn: "EventCategoryID");
+                        principalColumn: "EventCategoryID",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -201,7 +202,7 @@ namespace ZooAndAnimalFun.Migrations
                         name: "FK_Venue_Event_EventID",
                         column: x => x.EventID,
                         principalTable: "Event",
-                        principalColumn: "EventId",
+                        principalColumn: "EventID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -220,13 +221,14 @@ namespace ZooAndAnimalFun.Migrations
                         name: "FK_Session_Event_EventID",
                         column: x => x.EventID,
                         principalTable: "Event",
-                        principalColumn: "EventId",
+                        principalColumn: "EventID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Session_Venue_VenueID",
                         column: x => x.VenueID,
                         principalTable: "Venue",
-                        principalColumn: "VenueID");
+                        principalColumn: "VenueID",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(

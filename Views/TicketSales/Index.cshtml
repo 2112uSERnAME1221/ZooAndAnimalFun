@@ -27,7 +27,21 @@
             <th>
                 @Html.DisplayNameFor(model => model.TicketTypeID)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.SessionID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SessionID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TicketType.TicketTypeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer.LastName)
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -47,6 +61,18 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TicketTypeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Session.SessionID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketType.TicketTypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.LastName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.TicketID">Edit</a> |

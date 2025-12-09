@@ -22,6 +22,9 @@ namespace ZooAndAnimalFun.Controllers
         // GET: Species
         public async Task<IActionResult> Index()
         {
+            var animals = _context.Species
+                .Include(a => a.EventCategory);
+
             return View(await _context.Species.ToListAsync());
         }
 

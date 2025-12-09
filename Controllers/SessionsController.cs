@@ -22,6 +22,11 @@ namespace ZooAndAnimalFun.Controllers
         // GET: Sessions
         public async Task<IActionResult> Index()
         {
+            var sessions = _context.Session
+            .Include(a => a.Event)
+            .Include(a => a.Venue);
+
+
             return View(await _context.Session.ToListAsync());
         }
 
@@ -137,7 +142,7 @@ namespace ZooAndAnimalFun.Controllers
         // POST: Sessions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var session = await _context.Session.FindAsync(id);
             if (session != null)

@@ -24,7 +24,7 @@ namespace ZooAndAnimalFun.Migrations
 
             modelBuilder.Entity("ZooAndAnimalFun.Models.Animal", b =>
                 {
-                    b.Property<string>("ID")
+                    b.Property<string>("AnimalID")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("GenderID")
@@ -47,7 +47,7 @@ namespace ZooAndAnimalFun.Migrations
                     b.Property<decimal>("Weight")
                         .HasColumnType("decimal(18, 2)");
 
-                    b.HasKey("ID");
+                    b.HasKey("AnimalID");
 
                     b.HasIndex("GenderID");
 
@@ -146,7 +146,7 @@ namespace ZooAndAnimalFun.Migrations
 
             modelBuilder.Entity("ZooAndAnimalFun.Models.Event", b =>
                 {
-                    b.Property<string>("EventId")
+                    b.Property<string>("EventID")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("AnimalID")
@@ -168,7 +168,7 @@ namespace ZooAndAnimalFun.Migrations
                     b.Property<DateTime>("EventStart")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("EventId");
+                    b.HasKey("EventID");
 
                     b.HasIndex("AnimalID");
 
@@ -378,7 +378,7 @@ namespace ZooAndAnimalFun.Migrations
                     b.HasOne("ZooAndAnimalFun.Models.EventCategory", "EventCategory")
                         .WithMany()
                         .HasForeignKey("EventCategoryID")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Animal");
@@ -397,7 +397,7 @@ namespace ZooAndAnimalFun.Migrations
                     b.HasOne("ZooAndAnimalFun.Models.Venue", "Venue")
                         .WithMany()
                         .HasForeignKey("VenueID")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Event");

@@ -28,5 +28,39 @@ namespace ZooAndAnimalFun.Data
         public DbSet<ZooAndAnimalFun.Models.TicketSales> TicketSales { get; set; } = default!;
         public DbSet<ZooAndAnimalFun.Models.TicketType> TicketType { get; set; } = default!;
         public DbSet<ZooAndAnimalFun.Models.Venue> Venue { get; set; } = default!;
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+
+        {
+
+            base.OnModelCreating(modelBuilder);
+
+
+
+            modelBuilder.Entity<Event>()
+
+                .HasOne(e => e.EventCategory)
+
+                .WithMany()
+
+                .HasForeignKey(e => e.EventCategoryID)
+
+                .OnDelete(DeleteBehavior.Restrict);
+
+
+
+            modelBuilder.Entity<Session>()
+
+                .HasOne(s => s.Venue)
+
+                .WithMany()
+
+                .HasForeignKey(s => s.VenueID)
+
+                .OnDelete(DeleteBehavior.Restrict);
+
+        }
     }
 }
+
+

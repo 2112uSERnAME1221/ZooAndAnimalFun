@@ -6,7 +6,7 @@ namespace ZooAndAnimalFun.Models
     public class Event
     {
       [Key]
-      public string EventId { get; set; }
+      public string EventID { get; set; }
 
       [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
       [Required]
@@ -23,7 +23,6 @@ namespace ZooAndAnimalFun.Models
 
       [Required]
       public string EventCategoryID { get; set; }
-      [DeleteBehavior(DeleteBehavior.NoAction)]
       public virtual required EventCategory EventCategory { get; set; }
 
       [Required]
