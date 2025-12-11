@@ -7,7 +7,7 @@ Week 11
 <img width="528" height="592" alt="SessionIndex" src="https://github.com/user-attachments/assets/45b62982-faa4-4b73-a17c-34d3f7ca9590" />
 <img width="540" height="194" alt="SessionDBInformation" src="https://github.com/user-attachments/assets/0a666565-4694-4b44-ba27-6c1a5a6a390b" />
 
-
+I don't have the service class so I will do my best to explain why it hasn't been necessary by the use of the parts that I will be showing in the pictures and what I will have written down. My test plan involved seeing if I could check if the time was available, so I ended up using the 3 parts of my session to determine that. One of the parts is from the seed.xml, this is where the information is to be held. This will then be utilized to pick up the other models IDs and there for its information due to the fact that all the information being used in this model is purely dependent on the other models information, the use of the Session model to determine what information I will need to be a part of the that part of database to able to determine what to pull out from the other models database and the sessions index is the part of the website that will display the gathered information to show the of the events name, the venue in use, and the start and end times that come along with the event via the event that would determine what times are available for that day. 
 
 
 
