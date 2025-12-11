@@ -3,9 +3,10 @@
 
 Week 11
 
-<img width="777" height="862" alt="AnimalModel" src="https://github.com/user-attachments/assets/ae194f24-4b28-41b6-8672-55af0f7e64c9" />
-<img width="567" height="818" alt="AnimalIndex" src="https://github.com/user-attachments/assets/05d2117b-62e6-4946-985b-748cd4670214" />
-<img width="524" height="691" alt="CRUDGet" src="https://github.com/user-attachments/assets/6f451bb0-0747-42a8-a82f-51bd78ed7698" />
+<img width="789" height="332" alt="SessionModel" src="https://github.com/user-attachments/assets/a001d952-7166-4d52-8e16-2b80d38015a0" />
+<img width="528" height="592" alt="SessionIndex" src="https://github.com/user-attachments/assets/45b62982-faa4-4b73-a17c-34d3f7ca9590" />
+<img width="540" height="194" alt="SessionDBInformation" src="https://github.com/user-attachments/assets/0a666565-4694-4b44-ba27-6c1a5a6a390b" />
+
 
 
 
